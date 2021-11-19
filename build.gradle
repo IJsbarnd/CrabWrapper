@@ -1,0 +1,42 @@
+plugins {
+    id 'com.github.johnrengelman.shadow' version '7.0.0'
+    id 'java'
+}
+
+group 'Wrapper'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    dependencies {
+        // https://mvnrepository.com/artifact/commons-cli/commons-cli
+        implementation group: 'commons-cli', name: 'commons-cli', version: '1.4'
+
+        // https://mvnrepository.com/artifact/nz.ac.waikato.cms.weka/weka-stable
+        implementation group: 'nz.ac.waikato.cms.weka', name: 'weka-stable', version: '3.8.0'
+
+        // https://mvnrepository.com/artifact/commons-io/commons-io
+        implementation group: 'commons-io', name: 'commons-io', version: '2.6'
+
+        testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+        testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    }
+
+    jar {
+        manifest {
+            attributes "Main-Class": "Wrapper.crab_color_prediction.Color_prediction"
+        }
+    }
+
+    shadowJar {
+        manifest {
+            attributes "Main-Class": "crab_color_prediction.Color_prediction"
+    }}
+
+    test {
+    useJUnitPlatform()
+}
+}

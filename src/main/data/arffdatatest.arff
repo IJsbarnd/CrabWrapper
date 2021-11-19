@@ -1,0 +1,11 @@
+@relation crabdata
+
+@attribute sex {M, F}
+@attribute FL numeric
+@attribute RW numeric
+@attribute CL numeric
+@attribute CW numeric
+@attribute BD numeric
+@attribute sp {B, O}
+
+@data

@@ -1,0 +1,7 @@
+sex {M, F}
+FL numeric
+RW numeric
+CL numeric
+CW numeric
+BD numeric
+sp {B, O}

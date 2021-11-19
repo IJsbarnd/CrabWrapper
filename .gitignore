@@ -1,0 +1,22 @@
+# Files git needs to ignore during commit
+.gradle
+/build
+/.idea
+/gradle
+gradlew
+gradlew.bat
+CLIdemo.iml
+
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# Package Files #
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
