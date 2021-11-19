@@ -65,7 +65,7 @@ If the input is a file, it has to be a ``.arff`` file. The order of the attribut
 ## Command examples
 These are some examples for commmands to run this program. These commands can only be used after creating a ShadowJar with the gradle.build.
 
-This command will classify 8 instances from the test .arff file.
+This command will classify 8 instances from the test ``.arff`` file.
 ```
 java -jar build/libs/Wrapper-1.0-SNAPSHOT-all.jar -f src/main/data/testfile.arff
 ```
