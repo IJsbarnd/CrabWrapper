@@ -14,7 +14,7 @@ This is a java wrapper around a weka model. This project can take the gender and
 ## Project description
 This project uses a J48 model. This model predicts the color of the crab, based on the gender and morphological measurements. Out of the test for what machine learning algorithm could predict this the best, it was SimpleLogistic that reached the highest score. But since I have been struggling with things outside this project, I was unable to get a SimpleLogistic model to work.
 
-This application can be followed and cloned by going to [git repo](https://github.com/IJsbarnd/CrabWrapper)
+This application can be followed and cloned by going to this [git repo.](https://github.com/IJsbarnd/CrabWrapper)
 I have had many struggles with GitHub for this project, so there are very few commits. This is because I had to create multiple new repositories since I couldn't get the others to work. Also, since I didn't know using a GitHub repository was obligated (I thought it was recommended), I started working on this project in other ways. 
 
 ## Installation
