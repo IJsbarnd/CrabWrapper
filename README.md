@@ -1,5 +1,5 @@
 # Crab color prediction #
-This is a java wrapper around a weka model. This project can take the gender and five morphological measurements of a Leptograpsus variegatus and predict the color of this crab. It can also take an input file with measurements for multiple crabs. It has an 88% accuracy.
+This is a java wrapper around a weka model. This project can take the gender and five morphological measurements of a Leptograpsus variegatus and predict the color of this crab. It can also take an input file with measurements for multiple crabs. It currently has an 100% accuracy.
 
 ## Table of content
 
@@ -12,10 +12,9 @@ This is a java wrapper around a weka model. This project can take the gender and
 - [Contact](#contact)
 
 ## Project description
-This project uses a J48 model. This model predicts the color of the crab, based on the gender and morphological measurements. Out of the test for what machine learning algorithm could predict this the best, it was SimpleLogistic that reached the highest score. But since I have been struggling with things outside this project, I was unable to get a SimpleLogistic model to work.
+This project uses a SimpleLogistics model. This model predicts the color of the crab, based on the gender and morphological measurements. Out of the test for what machine learning algorithm could predict this the best, it was SimpleLogistic that reached the highest score. So this model uses a SimpleLogistic model.
 
 This application can be followed and cloned by going to this [git repo.](https://github.com/IJsbarnd/CrabWrapper)
-I have had many struggles with GitHub for this project, so there are very few commits. This is because I had to create multiple new repositories since I couldn't get the others to work. Also, since I didn't know using a GitHub repository was obligated (I thought it was recommended), I started working on this project in other ways. 
 
 ## Installation
 To install this program, the repository can be downloaded or cloned. The program can then run on your system, provided the current version of java is up-to-date.
@@ -63,7 +62,7 @@ The gender attribute only accepts a "M" for male or a "F" for female, and all me
 If the input is a file, it has to be a ``.arff`` file. The order of the attributes in this file is very important. The instances in the file should be comma separated values, like the instance input.
 
 ## Command examples
-These are some examples for commmands to run this program. These commands can only be used after creating a ShadowJar with the gradle.build.
+These are some examples for commands to run this program. These commands can only be used after creating a ShadowJar with the gradle.build.
 
 This command will classify 8 instances from the test ``.arff`` file.
 ```

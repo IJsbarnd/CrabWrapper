@@ -1,5 +1,6 @@
 package crab_color_prediction;
 
+import weka.classifiers.functions.SimpleLogistic;
 import weka.classifiers.trees.J48;
 import weka.core.Instances;
 import weka.core.converters.ConverterUtils.DataSource;
@@ -7,31 +8,40 @@ import weka.core.converters.ConverterUtils.DataSource;
 import java.io.IOException;
 
 public class WekaUsage {
-    public static String modelFile = "src/main/data/J48model.model";
+    public static String modelFile = "src/main/data/SimpleModel.model";
     private final String inputfile;
 
+    /**
+     * The constructor method for WekaUsage.
+     * @param inputfile
+     */
     public WekaUsage(String inputfile) {
         this.inputfile = inputfile;
     }
 
+    /**
+     * The method that uses the other methods to classify the instance/file.
+     */
     protected void start() {
         String datafile = "src/main/data/crabdata.arff";
         try {
-            System.out.println(inputfile);
-            J48 modelSourceFile = loadClassifier();
+            SimpleLogistic simpleModelFile = loadClassifier();
             Instances unknownInstances = loadArff(inputfile);
-            //System.out.println("\nunclassified unknownInstances = \n" + unknownInstances);
-            classifyNewInstances(modelSourceFile, unknownInstances);
-
+            classifyNewInstances(simpleModelFile, unknownInstances);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-
+    /**
+     * Loads the input file and returns the instances from the file.
+     * @param inputfile the input file.
+     * @return the instances from the file.
+     * @throws IOException if the file is unreadable
+     */
     private Instances loadArff(String inputfile) throws IOException {
         try{
-            System.out.println(inputfile);
+            //Make a datasource of the inputfile
             DataSource source = new DataSource(inputfile);
             Instances instances = source.getDataSet();
             instances.setClassIndex(instances.numAttributes() - 1);
@@ -41,33 +51,25 @@ public class WekaUsage {
         }
     }
 
-    private void printInstances(Instances instances) {
-        for (int i = 0; i < instances.numAttributes(); i++) {
-            System.out.println("Instance" + i + ":" + instances.attribute(i));
-        }
+    /**
+     * Read the model file.
+     * @return the model file
+     * @throws Exception if the file is not found
+     */
+    private SimpleLogistic loadClassifier() throws Exception {
+        return (SimpleLogistic) weka.core.SerializationHelper.read(modelFile);
     }
 
-    private J48 buildClassifier(Instances instances) throws Exception {
-        String[] options = new String[1];
-        options[0] = "-U";
-        J48 tree = new J48();
-        tree.setOptions(options);
-        tree.buildClassifier(instances);
-        return tree;
-    }
-
-    private void saveClassifier(J48 j48) throws Exception {
-        weka.core.SerializationHelper.write(modelFile, j48);
-    }
-
-    private J48 loadClassifier() throws Exception {
-        return (J48) weka.core.SerializationHelper.read(modelFile);
-    }
-
-    private void classifyNewInstances(J48 tree, Instances unknownInstances) throws Exception {
+    /**
+     * Classifies the new instances.
+     * @param reg the simplelogistics model
+     * @param unknownInstances the instances to be classified.
+     * @throws Exception if the modelfile is unreadable.
+     */
+    private void classifyNewInstances(SimpleLogistic reg, Instances unknownInstances) throws Exception {
         Instances labeled = new Instances(unknownInstances);
         for (int i = 0; i < unknownInstances.numInstances(); i++) {
-            double classlabel = tree.classifyInstance(unknownInstances.instance(i));
+            double classlabel = reg.classifyInstance(unknownInstances.instance(i));
             labeled.instance(i).setClassValue(classlabel);
         }
         System.out.println(labeled);
